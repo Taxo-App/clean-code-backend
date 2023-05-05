@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Topic;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class SampleController extends Controller
 {
@@ -13,6 +14,8 @@ class SampleController extends Controller
     public function index()
     {
         $topics = Topic::get();
+
+        //return Inertia::render('xxx');
 
         dd($topics);
     }
