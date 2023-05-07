@@ -35,6 +35,7 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('topics', \App\Http\Controllers\Topics\TopicIndexController::class);
+    Route::get('users', \App\Http\Controllers\Admin\UserIndexController::class);
 
 });
 
