@@ -12,4 +12,6 @@ class EloquentTopicRepository extends RepositoryAbstract implements TopicReposit
     {
         return Topic::class;
     }
+
+
 }

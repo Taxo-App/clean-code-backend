@@ -15,7 +15,7 @@ class TopicIndexController extends Controller
     }
     public function __invoke()
     {
-        $topics = $this->topics->all();
-        dd($topics);
+        $topic = $this->topics->all();
+        dd($topic);
     }
 }
