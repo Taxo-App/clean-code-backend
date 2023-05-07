@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Topics;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\TopicRepository;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class TopicIndexController extends Controller
 {
@@ -15,7 +16,11 @@ class TopicIndexController extends Controller
     }
     public function __invoke()
     {
-        $topic = $this->topics->all();
-        dd($topic);
+        $topics = $this->topics->paginate();
+
+
+        return Inertia::render('Topics/Index', [
+            'topics' => $topics
+        ]);
     }
 }

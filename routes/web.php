@@ -34,7 +34,7 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::get('topics', \App\Http\Controllers\Topics\TopicIndexController::class);
+    Route::get('topics', \App\Http\Controllers\Topics\TopicIndexController::class)->name('topics.index');
     Route::get('users', \App\Http\Controllers\Admin\UserIndexController::class);
 
 });
