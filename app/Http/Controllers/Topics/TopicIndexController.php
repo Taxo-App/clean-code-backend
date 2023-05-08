@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Topics;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\TopicRepository;
-use App\Repositories\Eloquent\Criteria\LatestFirst;
+use App\Repositories\Eloquent\Criteria\{
+    ByUser,
+    IsLive,
+    LatestFirst
+};
+
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -17,7 +22,11 @@ class TopicIndexController extends Controller
     }
     public function __invoke()
     {
-        $topics = $this->topics->withCriteria(new LatestFirst())
+        $topics = $this->topics->withCriteria([
+            new LatestFirst(),
+            new IsLive(),
+            new ByUser(auth()->user()->id)
+        ])
             ->paginate();
 
         return Inertia::render('Topics/Index', [
