@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Topics;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\TopicRepository;
+use App\Repositories\Eloquent\Criteria\LatestFirst;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -16,8 +17,8 @@ class TopicIndexController extends Controller
     }
     public function __invoke()
     {
-        $topics = $this->topics->paginate();
-
+        $topics = $this->topics->withCriteria(new LatestFirst())
+            ->paginate();
 
         return Inertia::render('Topics/Index', [
             'topics' => $topics
