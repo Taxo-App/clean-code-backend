@@ -15,4 +15,9 @@ class Topic extends Model
         'title',
         'user_id'
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

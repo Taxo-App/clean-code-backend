@@ -18,7 +18,7 @@ class TopicFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 1,
+            'user_id' => $this->faker->randomElement([1,2]),
             'title' => $title = $this->faker->sentence(5),
             'slug' => Str::slug($title),
         ];
